@@ -1,8 +1,10 @@
 {
     "java.project.sourcePaths": [
-        ".devcontainer/JavaCrud/src"
+        ".devcontainer/JavaCrud/src",
+        "absences/src/main/java/com/louisptc/AbsenceManager/Cli"
     ],
     "java.project.referencedLibraries": [
-        ".devcontainer/JavaCrud/lib/pgJDBC 42.7.3.jar"
-    ]
+        ".devcontainer/JavaCrud/lib/sqlite-jdbc3.45.2.0.jar"
+    ],
+    "java.configuration.updateBuildConfiguration": "automatic"
 }

@@ -1,3 +1,6 @@
+DROP TABLE IF EXISTS students;
+DROP TABLE IF EXISTS promotions;
+
 CREATE TABLE IF NOT EXISTS promotions (
     promotion_id SERIAL PRIMARY KEY,
     promotion_name VARCHAR(255) NOT NULL,

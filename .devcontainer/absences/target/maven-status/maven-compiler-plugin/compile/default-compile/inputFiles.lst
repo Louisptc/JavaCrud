@@ -1,0 +1,8 @@
+/workspaces/java-postgres/.devcontainer/absences/src/main/java/com/louisptc/AbsenceManager/Cli/Main.java
+/workspaces/java-postgres/.devcontainer/absences/src/main/java/com/louisptc/AbsenceManager/Model/Promotion.java
+/workspaces/java-postgres/.devcontainer/absences/src/main/java/com/louisptc/AbsenceManager/Repository/PromotionRepository.java
+/workspaces/java-postgres/.devcontainer/absences/src/main/java/com/louisptc/AbsenceManager/Controller/AbsenceController.java
+/workspaces/java-postgres/.devcontainer/absences/src/main/java/com/louisptc/AbsenceManager/Model/Student.java
+/workspaces/java-postgres/.devcontainer/absences/src/main/java/com/louisptc/AbsenceManager/Model/DatabaseConnection.java
+/workspaces/java-postgres/.devcontainer/absences/src/main/java/com/louisptc/AbsenceManager/Utils/DbUtil.java
+/workspaces/java-postgres/.devcontainer/absences/src/main/java/com/louisptc/AbsenceManager/Repository/StudentRepository.java

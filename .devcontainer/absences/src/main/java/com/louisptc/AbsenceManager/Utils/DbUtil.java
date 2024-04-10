@@ -1,4 +1,4 @@
-package AbsenceManager.Utils;
+package com.louisptc.AbsenceManager.Utils;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

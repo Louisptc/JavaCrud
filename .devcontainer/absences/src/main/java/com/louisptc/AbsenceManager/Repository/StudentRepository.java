@@ -1,13 +1,15 @@
-package AbsenceManager.Repository;
+package com.louisptc.AbsenceManager.Repository;
 
-import AbsenceManager.Model.DatabaseConnection;
-import AbsenceManager.Model.Student;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.louisptc.AbsenceManager.Model.DatabaseConnection;
+import com.louisptc.AbsenceManager.Model.Student;
 
 public class StudentRepository {
 

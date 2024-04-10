@@ -1,4 +1,4 @@
-package AbsenceManager.Model;
+package com.louisptc.AbsenceManager.Model;
 
 public class Student {
 
