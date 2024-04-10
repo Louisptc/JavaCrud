@@ -1,15 +1,12 @@
 package com.louisptc.AbsenceManager.Model;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 
 public class DatabaseConnection {
-    private final String url = "jdbc:sqlite" + System.getProperty("user.dir") + "/absences/absences.db";
+    private final String url = "jdbc:sqlite:" + System.getProperty("user.dir") + "/absences/absences.db";
 
     public Connection connect() {
         Connection conn = null;
@@ -29,32 +26,32 @@ public class DatabaseConnection {
     }
 
     private void initializeDatabase(Connection conn) {
-        String sqlFilePath = "src/Resources/db/init.sql";
-        try (BufferedReader reader = new BufferedReader(new FileReader(sqlFilePath))) {
-            String line;
-            StringBuilder sqlStatement = new StringBuilder();
-            
-            // SQLite connection object created earlier
-            try (java.sql.Statement stmt = conn.createStatement()) {
-                while ((line = reader.readLine()) != null) {
-                    // Ignore comments and empty lines
-                    if(line.trim().isEmpty() || line.trim().startsWith("--")) {
-                        continue;
-                    }
-                    // Add the line to the current statement
-                    sqlStatement.append(line);
-                    // If the line ends with a semicolon, it's the end of the statement
-                    if (line.endsWith(";")) {
-                        stmt.execute(sqlStatement.toString());
-                        sqlStatement.setLength(0); // Clear the StringBuilder for the next statement
-                    }
-                }
-            }
-            System.out.println("Database initialization completed successfully.");
+        try (java.sql.Statement stmt = conn.createStatement()) {
+            stmt.executeUpdate("DROP TABLE IF EXISTS students;");
+            stmt.executeUpdate("DROP TABLE IF EXISTS promotions;");
+
+            stmt.executeUpdate("CREATE TABLE IF NOT EXISTS promotions ("
+                    + "promotion_id SERIAL PRIMARY KEY,"
+                    + "promotion_name VARCHAR(255) NOT NULL,"
+                    + "promotion_year INTEGER NOT NULL"
+                    + ");");
+
+            stmt.executeUpdate("CREATE TABLE IF NOT EXISTS students ("
+                    + "student_id SERIAL PRIMARY KEY,"
+                    + "first_name VARCHAR(255) NOT NULL,"
+                    + "last_name VARCHAR(255) NOT NULL,"
+                    + "email VARCHAR(255) UNIQUE NOT NULL,"
+                    + "phone_number VARCHAR(255),"
+                    + "absence_count INTEGER DEFAULT 0,"
+                    + "is_delegate BOOLEAN DEFAULT false,"
+                    + "promotion_id INTEGER NOT NULL,"
+                    + "UNIQUE(first_name, last_name),"
+                    + "FOREIGN KEY (promotion_id) REFERENCES promotions(promotion_id)"
+                    + ");");
+
+            System.out.println("Database tables created successfully.");
         } catch (SQLException e) {
-            System.out.println("Error executing database initialization script: " + e.getMessage());
-        } catch (IOException e) {
-            System.out.println("Error reading SQL file: " + e.getMessage());
+            System.out.println("Error creating database tables: " + e.getMessage());
         }
     }
 }
