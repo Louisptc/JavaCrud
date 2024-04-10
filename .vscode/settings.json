@@ -1,0 +1,8 @@
+{
+    "java.project.sourcePaths": [
+        ".devcontainer/JavaCrud/src"
+    ],
+    "java.project.referencedLibraries": [
+        ".devcontainer/JavaCrud/lib/pgJDBC 42.7.3.jar"
+    ]
+}
